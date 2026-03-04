@@ -1,0 +1,18 @@
+Module 16.1 - Round 5 Query Submission
+
+These query points were generated with a deep-ensemble neural-network surrogate and an uncertainty-aware acquisition rule.
+
+function_1: 0.000000-1.000000
+function_2: 1.000000-0.000000
+function_3: 0.570957-1.000000-1.000000
+function_4: 0.000000-0.000000-0.197642-0.000000
+function_5: 0.000000-1.000000-1.000000-1.000000
+function_6: 0.000000-0.000000-1.000000-1.000000-0.000000
+function_7: 0.000000-0.391404-0.118670-0.000000-0.127948-0.996521
+function_8: 0.049003-0.000000-0.000000-0.746439-1.000000-1.000000-0.000000-0.924122
+
+Re-generate command:
+python src/generate_week5_queries_deep_ensemble.py --data-dir initial_data --output src/module16_week5_queries.txt
+
+Important:
+This repository still contains the original `initial_data` arrays. If your local files have been updated to the post-Round-4 state (14-point data for the early functions), rerun the command above before final portal submission so Week 5 queries use the latest observations.

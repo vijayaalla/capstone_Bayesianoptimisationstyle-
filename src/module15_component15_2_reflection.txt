@@ -1,0 +1,29 @@
+Module 15.2 - Reflection: Neural Network Hyperparameters and BBO Strategy
+
+Neural-network hyperparameters significantly affect model behavior in black-box optimisation. In this round, I used an MLP ensemble and observed that architecture size, learning rate, regularisation, and stopping criteria each changed how aggressive or conservative the query suggestions were.
+
+1) Hidden layers and width
+Wider/deeper networks can model more complex response surfaces, which is useful when functions are highly non-linear. However, with limited points, larger networks can overfit and produce unstable predictions between nearby points. I controlled this by sampling moderate network sizes instead of using one very large network.
+
+2) Learning rate and optimiser dynamics
+Learning rate strongly affects convergence quality. If it is too high, predictions become noisy and inconsistent; if too low, training underfits and misses useful structure. I used bounded randomisation of learning rate to avoid relying on a single setting.
+
+3) Regularisation (alpha) and generalisation
+Regularisation reduced overfitting risk, especially in higher dimensions with sparse coverage. Stronger regularisation produced smoother surfaces and safer extrapolation, while weaker regularisation allowed sharper local fits but increased variance.
+
+4) Early stopping and validation split
+Early stopping improved robustness by preventing over-training on small datasets. This made the surrogate less sensitive to noise and reduced extreme query jumps caused by overfit models.
+
+5) Exploration vs exploitation impact
+Instead of using a single NN prediction, I used an ensemble and scored candidates with:
+acquisition = mean_prediction + beta * prediction_std
+This keeps exploitation through high predicted output and exploration through model disagreement (uncertainty proxy). As dimensionality increases, I keep more exploration because local data density is lower.
+
+6) How this informs my BBO strategy
+This exercise reinforced that query quality depends on model calibration, not just model complexity. For future rounds, I will:
+- keep using ensembles to improve stability
+- tune hyperparameters within constrained ranges
+- avoid over-committing to one local optimum
+- adapt exploration strength by function dimensionality and observed noise
+
+Overall, neural-network hyperparameter analysis helped me make more controlled, evidence-based query decisions under uncertainty, which is central to real-world black-box optimisation.

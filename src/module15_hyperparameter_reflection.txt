@@ -1,0 +1,65 @@
+Module 15 Reflection - Neural Network Hyperparameters
+
+1) Hyperparameter effects
+
+Key neural-network hyperparameters I used were:
+- hidden_layer_sizes (network width/depth)
+- learning_rate_init
+- alpha (L2 regularisation strength)
+- early_stopping + validation_fraction
+- max_iter
+
+I tested these on my current BBO data using 5-fold CV (MLP + StandardScaler), especially on Function 4 (4D) and Function 8 (8D).
+
+Function 4 example:
+- baseline (48,48), lr=1e-3, alpha=1e-4: R2=0.842, MAE=1.775
+- high learning rate (1e-2): R2=0.519, MAE=2.946 (less stable, worse convergence)
+- low learning rate (1e-4): R2=0.693, MAE=2.611 (more stable but underfits in this setup)
+- small net (24,24): R2=0.827, MAE=1.857
+- large net (96,96): R2=0.836, MAE=1.852
+
+Function 8 example (harder high-dimensional case):
+- baseline: R2=-2.352, MAE=1.227
+- low learning rate improved MAE slightly to 1.135
+- high learning rate worsened MAE to 1.401
+- larger network worsened MAE to 1.235
+
+Early stopping was not always beneficial with small datasets:
+- Function 4: early_stopping=False MAE=1.775 vs True MAE=2.747
+- Function 8: early_stopping=False MAE=1.227 vs True MAE=1.666
+
+This suggests that when data is limited, splitting off a validation subset can reduce effective training data too much.
+
+2) Discrete vs continuous hyperparameters
+
+Discrete hyperparameters:
+- hidden_layer_sizes (e.g., (24,24), (48,48), (96,96))
+- number of layers
+- activation function choice
+- early_stopping (True/False)
+- batch size (if explicitly set)
+
+Continuous hyperparameters:
+- learning_rate_init
+- alpha (regularisation)
+- momentum / beta terms (optimizer-dependent)
+- dropout rate (if used in other NN libraries)
+
+Why type matters for tuning:
+- Continuous parameters are usually tuned with random/log-scale search or Bayesian optimisation.
+- Discrete/categorical parameters are often tuned with grid/random search, or BO with mixed-variable support.
+- For this capstone, I used bounded randomisation (log-uniform ranges) for continuous values and small candidate sets for discrete architecture choices.
+
+3) Application to the capstone
+
+If I use a neural network surrogate in BBO, hyperparameter tuning directly affects query quality. Poor tuning can create unstable surrogate surfaces and misleading query proposals, while well-tuned models provide smoother, more useful acquisition signals.
+
+My next decisions will be:
+- keep architecture moderate for low-data regimes
+- prefer conservative learning-rate ranges
+- use regularisation to reduce overfitting
+- validate with simple repeated checks instead of assuming one setting works for all functions
+
+Yes, I can apply BBO to improve NN performance directly: treat NN hyperparameter tuning itself as a black-box optimisation problem (objective = validation performance or downstream query quality), then iteratively propose new hyperparameter settings. This creates a useful loop where BBO improves the surrogate that is used for BBO query selection.
+
+Overall, this reflection changed my strategy from “pick one NN config and trust it” to “treat hyperparameters as first-class optimisation variables with explicit evidence checks.”

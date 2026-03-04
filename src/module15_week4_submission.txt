@@ -1,0 +1,18 @@
+Module 15.1 - Round 4 Query Submission
+
+These query points were generated from the current local dataset using a neural-network surrogate ensemble.
+
+function_1: 0.999982-0.000875
+function_2: 0.999280-0.003412
+function_3: 0.072864-0.995732-0.995213
+function_4: 0.362725-0.364445-0.387879-0.287454
+function_5: 0.344925-0.907594-0.988949-0.998913
+function_6: 0.153030-0.201046-0.045193-0.677938-0.014714
+function_7: 0.047732-0.456048-0.104507-0.037208-0.135627-0.991164
+function_8: 0.062512-0.986289-0.942032-0.909317-0.157136-0.865951-0.103198-0.935308
+
+Re-generate command:
+python src/generate_week4_queries_nn.py --data-dir initial_data --output src/module15_week4_queries.txt
+
+Important:
+If you now have updated post-round data (13 points for early functions), update the local arrays first and rerun the command so your final submitted queries are based on the latest observations.

@@ -1,0 +1,19 @@
+1) How has your query strategy changed from earlier rounds? Do you rely more on model predictions, or are you still exploring new regions? Do you tune hyperparameters or rely on heuristics?
+
+My query strategy has shifted from mostly heuristic/manual choices in the first round to model-guided selection in later rounds. In Round 2, I used a GP-style surrogate with an uncertainty-aware acquisition rule. In Round 3, I used an SVM-based surrogate (SVR ensemble), so I now rely more on model predictions than before. I still explore new regions by adding an uncertainty bonus and distance constraints, so queries are not only local refinements. For hyperparameters, I use bounded randomized tuning (for example C, gamma, epsilon ranges in SVR) rather than fixed defaults, combined with practical heuristics to keep the process stable.
+
+2) How do you balance exploration against exploitation? Do you focus more on areas known to perform well, or are you still sampling from untested regions?
+
+I balance exploration and exploitation using a score that combines predicted performance (exploitation) and predictive uncertainty (exploration). I prioritize high-score regions when confidence is strong, but still sample untested regions when uncertainty is high or when local-optimum risk is visible. In low-dimensional functions I lean slightly more toward exploitation, while in higher-dimensional functions I keep stronger exploration because sparse coverage increases uncertainty.
+
+3) How would SVMs change your approach? Could you use a soft-margin SVM to classify high vs low performance regions? Would a kernel SVM help if the response surface is non-linear?
+
+SVMs change my approach by giving a robust, margin-based model for small-to-medium datasets. Yes, a soft-margin SVM is useful to classify high-vs-low performance regions by thresholding outputs (for example top quartile vs rest), especially when labels are noisy. A kernel SVM (such as RBF) is particularly helpful when the response surface is non-linear, because linear boundaries are often too restrictive for black-box landscapes.
+
+4) What limitations of your current model become apparent as data grows? Is it overfitting? Do any features or dimensions emerge as irrelevant?
+
+As data grows, the main limitations are sensitivity to hyperparameters, weak uncertainty calibration for single-model SVMs, and potential overfitting in sparse high-dimensional spaces. Ensemble variation helps, but uncertainty remains approximate compared with probabilistic surrogates. Some dimensions appear low-impact in specific functions, but with limited points it is risky to declare them irrelevant too early. I treat feature relevance as provisional and confirm it over multiple rounds.
+
+5) How does this black-box set-up prepare you to think like a data scientist when faced with incomplete knowledge in other projects?
+
+This black-box setup builds core data-science habits: making decisions under uncertainty, iterating with partial feedback, documenting trade-offs, and updating strategy based on evidence rather than assumptions. It also reinforces practical skills like choosing surrogate models, balancing exploration vs exploitation, handling noisy outputs, and communicating why a decision was made even when the full system is unknown.

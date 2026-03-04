@@ -1,0 +1,22 @@
+Module 17.1 - Round 6 Query Submission
+
+These query points were generated with a HEBO-inspired hybrid Bayesian optimisation pipeline:
+- input warping
+- GP surrogate
+- blended acquisition (EI + PI + UCB + uncertainty term)
+- novelty and minimum-distance safeguards
+
+function_1: 0.703450-0.003660
+function_2: 0.694771-0.451208
+function_3: 0.666853-0.995911-0.413924
+function_4: 0.482386-0.477707-0.426482-0.467246
+function_5: 0.262215-0.996503-0.999999-0.999999
+function_6: 0.025785-0.287917-0.528724-0.905888-0.072583
+function_7: 0.012652-0.184847-0.200768-0.140685-0.391243-0.874779
+function_8: 0.016011-0.130441-0.128941-0.012850-0.995973-0.695065-0.150707-0.419810
+
+Re-generate command:
+python src/generate_week6_queries_hebo_hybrid.py --data-dir initial_data --output src/module17_week6_queries.txt
+
+Important:
+If your local arrays now include the latest post-Round-5 observations (15-point state for early functions), rerun the command above before final portal submission so Round 6 queries are based on current data.

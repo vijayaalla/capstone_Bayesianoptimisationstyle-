@@ -1,0 +1,37 @@
+Module 15 - Round 4 Submission and Reflection
+
+Part 1: Query submission (portal format)
+
+Note: These queries were generated from the data currently available in this repository. If your local arrays have already been updated with new portal feedback (for example the 13-point state), regenerate before final submission.
+
+function_1: 0.999982-0.000875
+function_2: 0.999280-0.003412
+function_3: 0.072864-0.995732-0.995213
+function_4: 0.362725-0.364445-0.387879-0.287454
+function_5: 0.344925-0.907594-0.988949-0.998913
+function_6: 0.153030-0.201046-0.045193-0.677938-0.014714
+function_7: 0.047732-0.456048-0.104507-0.037208-0.135627-0.991164
+function_8: 0.062512-0.986289-0.942032-0.909317-0.157136-0.865951-0.103198-0.935308
+
+Part 2: Reflection
+
+1) Inputs that behaved like support vectors
+Across functions, the most informative points were near sharp local changes in output rather than the center of dense clusters. In practice, these are points where nearby samples had noticeably different outcomes. I treated these as support-vector-like points because they define the boundary between higher and lower regions. Recognising them helped me place Round 4 queries near edge regions with high uncertainty instead of repeatedly sampling the same local basin.
+
+2) Surrogate model use and gradient directions
+I trained neural-network surrogate models (MLP ensemble) and inspected local sensitivity using finite-difference gradients around candidate points. For this capstone, the objective is maximisation, so I followed directions that increase surrogate output (gradient ascent intuition). For example, local sensitivities were strongest on a subset of variables in each function (for instance F5 had very strong influence from inputs 4 and 3; F8 from inputs 7 and 1), which helped prioritize dimensions for perturbation.
+
+3) Framing as classification ("good" vs "bad")
+I also considered thresholding outputs (top quartile = "good") and treating the task as boundary finding. Logistic regression offers a simple, interpretable linear boundary; SVM gives margin-based robustness and can use kernels for non-linear separation; neural networks can model complex boundaries but are harder to calibrate. The trade-off is that pushing for low misclassification can reduce exploration if the model is overconfident in known regions.
+
+4) Most appropriate model and interpretability vs flexibility
+For early rounds, simpler models were easier to trust. As dimensionality increased, neural-network and kernel methods became more useful because they captured non-linear interactions better than linear baselines. My practical balance was: use flexible models (SVM/NN) for candidate generation, then apply interpretability checks (feature sensitivity, neighborhood behavior) before final query selection.
+
+5) Variables with steepest gradients and experimental priority
+Steepest gradients indicate where small input changes can cause larger output changes. I used this to prioritize directional moves along high-gradient dimensions while keeping lower-impact dimensions relatively stable. This is especially useful in 6D-8D functions where unconstrained random changes waste queries. The gradient ranking is local, so I treat it as a navigation signal, not a global truth.
+
+6) NN boundary approximation and backpropagation value
+When framed as classification, the neural network approximated non-linear boundaries reasonably well, especially where linear separation is weak. Backpropagation (or equivalent sensitivity analysis) helped interpret which inputs were pushing predictions toward "good" or "bad" regions. This improved visualization of boundary shape and made query updates more deliberate.
+
+7) NN vs linear/logistic in capturing non-linearity
+Compared with linear/logistic models, the neural network captured non-linear patterns better in most functions, especially at higher dimensions. In quick top-quartile AUC checks, NN and logistic were similar on average, while SVM and NN each won on different functions, which confirms no single model dominates everywhere. The added NN flexibility was useful, but only when controlled with regularisation, early stopping, and ensemble averaging to limit overfitting.
