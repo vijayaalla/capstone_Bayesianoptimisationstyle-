@@ -1,0 +1,22 @@
+Module 19.1 - Round 8 Query Submission
+
+These query points were generated with an LLM-inspired query-selection layer:
+- structured few-shot style scoring
+- finite context window (`max_tokens=64` -> `context_window=8`)
+- constrained decoding (`temperature=0.65`, `top_k=96`, `top_p=0.88`)
+- strict output-format and boundary checks
+
+function_1: 0.003096-0.015342
+function_2: 0.995960-0.302626
+function_3: 0.588952-0.743293-0.011421
+function_4: 0.324718-0.337697-0.334311-0.392052
+function_5: 0.185571-0.824153-0.948712-0.979760
+function_6: 0.069378-0.524118-0.199547-0.856631-0.025358
+function_7: 0.294301-0.118676-0.484343-0.325790-0.159802-0.931507
+function_8: 0.092632-0.264766-0.024995-0.265425-0.667367-0.051237-0.095473-0.442073
+
+Re-generate command:
+python src/generate_week8_queries_llm_strategy.py --data-dir initial_data --output src/module19_week8_queries.txt --report src/module19_week8_prompt_report.txt
+
+Important:
+If your local arrays have been updated to the post-Round-7 state (17-point data for early functions), rerun the command before final portal submission so Round 8 queries use the latest observations.

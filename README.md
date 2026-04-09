@@ -46,7 +46,7 @@ The objective is to **maximise** all eight functions while working under strict 
 
 Success is not only highest observed output; it is also a strong evidence-based process: choosing reasonable points, learning from outcomes, and updating strategy over time.
 
-## Section 4: Technical Approach (Rounds 1-6)
+## Section 4: Technical Approach (Rounds 1-10)
 
 This is a living strategy log and is updated each round.
 
@@ -87,6 +87,32 @@ This is a living strategy log and is updated each round.
   3) blended acquisition from `EI + PI + UCB + uncertainty`
 - Added adaptive weighting to increase uncertainty focus when data is sparse.
 - Kept novelty and minimum-distance constraints to improve coverage quality.
+
+### Round 7
+- Added explicit hyperparameter tuning as a first-class step before query generation.
+- Per-function random-search tuning across SVR/MLP candidates using CV MAE.
+- Selected best model family per function, then built bootstrap ensembles for uncertainty-aware acquisition.
+- Used tuning diagnostics to adjust exploration weight and detect overfitting risk.
+
+### Round 8
+- Added an LLM-inspired decision layer on top of tuned surrogates.
+- Combined full-context and finite-context model views to mimic attention limits.
+- Used structured scoring instead of one raw acquisition value.
+- Added constrained decoding controls (`temperature`, `top_k`, `top_p`) and a context budget (`max_tokens`).
+- Applied light boundary penalties and strict formatting checks to reduce edge-case output artefacts.
+
+### Round 9
+- Added scaling-aware comparison across short-, medium-, and full-context model views.
+- Explicitly tracked emergence signals when larger context changed candidate preference.
+- Balanced stable scale agreement against disagreement and uncertainty.
+- Kept constrained decoding and novelty checks so emergent behavior could inform choices without dominating them.
+
+### Round 10
+- Shifted to a transparency-first decision rule for query selection.
+- Used an explicit score decomposition:
+  `score = 0.55 * predicted_value + 0.30 * uncertainty + 0.15 * novelty`
+- Chose candidates deterministically for easier reproducibility.
+- Added local sensitivity estimates to explain which input dimensions most influenced each chosen query.
 
 ### Exploration vs Exploitation Policy
 - Low dimensions: slightly more exploitation around promising areas.
@@ -129,7 +155,49 @@ Current Module 17 artifacts:
 - `src/module17_component17_2_technical_justification.md`
 - `src/module17_2_discussion_post.md` (Component 17.2 discussion-ready response)
 
-## Section 8: Reproducible Commands
+## Section 8: Module 18 Deliverables
+
+Current Module 18 artifacts:
+- `src/generate_week7_queries_tuned.py`
+- `src/module18_week7_queries.txt`
+- `src/module18_week7_tuning_report.txt`
+- `src/module18_week7_submission.txt`
+- `src/module18_component18_1_reflection.md`
+- `src/module18_discussion_post.md`
+
+## Section 9: Module 19 Deliverables
+
+Current Module 19 artifacts:
+- `src/generate_week8_queries_llm_strategy.py`
+- `src/module19_week8_queries.txt`
+- `src/module19_week8_prompt_report.txt`
+- `src/module19_week8_submission.txt`
+- `src/module19_component19_1_reflection.md`
+- `src/module19_discussion_post.md`
+
+## Section 10: Module 20 Deliverables
+
+Current Module 20 artifacts:
+- `src/generate_week9_queries_scaling_emergence.py`
+- `src/module20_week9_queries.txt`
+- `src/module20_week9_scaling_report.txt`
+- `src/module20_week9_submission.txt`
+- `src/module20_component20_1_reflection.md`
+- `src/module20_discussion_post.md`
+
+## Section 11: Module 21 Deliverables
+
+Current Module 21 artifacts:
+- `src/generate_week10_queries_interpretable.py`
+- `src/module21_week10_queries.txt`
+- `src/module21_week10_interpretability_report.txt`
+- `src/module21_week10_submission.txt`
+- `src/module21_component21_1_reflection.md`
+- `src/module21_discussion_post.md`
+- `docs/bbo_dataset_datasheet.md`
+- `docs/bbo_model_card.md`
+
+## Section 12: Reproducible Commands
 
 Query generation commands:
 - Round 3 (SVM):  
@@ -140,6 +208,14 @@ Query generation commands:
   `python src/generate_week5_queries_deep_ensemble.py --data-dir initial_data --output src/module16_week5_queries.txt`
 - Round 6 (HEBO-inspired hybrid):  
   `python src/generate_week6_queries_hebo_hybrid.py --data-dir initial_data --output src/module17_week6_queries.txt`
+- Round 7 (tuned surrogates):  
+  `python src/generate_week7_queries_tuned.py --data-dir initial_data --output src/module18_week7_queries.txt --report src/module18_week7_tuning_report.txt`
+- Round 8 (LLM-inspired strategy):  
+  `python src/generate_week8_queries_llm_strategy.py --data-dir initial_data --output src/module19_week8_queries.txt --report src/module19_week8_prompt_report.txt`
+- Round 9 (scaling/emergence strategy):  
+  `python src/generate_week9_queries_scaling_emergence.py --data-dir initial_data --output src/module20_week9_queries.txt --report src/module20_week9_scaling_report.txt`
+- Round 10 (interpretability strategy):  
+  `python src/generate_week10_queries_interpretable.py --data-dir initial_data --output src/module21_week10_queries.txt --report src/module21_week10_interpretability_report.txt`
 
 Formatting rule reminder:
 - Portal query values are emitted with six decimals in `0.xxxxxx` format.

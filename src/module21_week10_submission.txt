@@ -1,0 +1,22 @@
+Module 21.1 - Round 10 Query Submission
+
+These query points were generated with a transparency-first surrogate strategy:
+- tuned surrogate selection
+- explicit score decomposition (`prediction`, `uncertainty`, `novelty`)
+- deterministic query choice for reproducibility
+- interpretability report with local sensitivity by dimension
+
+function_1: 0.998699-0.000998
+function_2: 0.883916-0.999907
+function_3: 0.991282-0.986943-0.001498
+function_4: 0.337972-0.378628-0.347483-0.465718
+function_5: 0.858854-0.959788-0.990394-0.994515
+function_6: 0.671224-0.060565-0.994241-0.360432-0.005477
+function_7: 0.071642-0.202510-0.751891-0.008595-0.129151-0.976096
+function_8: 0.129787-0.265632-0.149370-0.965969-0.054148-0.029964-0.003875-0.265343
+
+Re-generate command:
+python src/generate_week10_queries_interpretable.py --data-dir initial_data --output src/module21_week10_queries.txt --report src/module21_week10_interpretability_report.txt
+
+Important:
+If your local arrays have been updated to the post-Round-9 state (19-point data for early functions), rerun the command before final portal submission so Round 10 queries use the latest observations.

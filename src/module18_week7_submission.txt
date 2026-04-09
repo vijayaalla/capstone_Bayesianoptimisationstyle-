@@ -1,0 +1,22 @@
+Module 18.1 - Round 7 Query Submission
+
+These query points were generated with a hyperparameter-tuned surrogate strategy:
+- random-search tuning of SVR and MLP candidates (CV MAE)
+- per-function model-family selection
+- bootstrap ensemble for uncertainty
+- acquisition = mean + beta * std + novelty
+
+function_1: 0.000069-0.992322
+function_2: 0.999999-0.999999
+function_3: 0.567864-0.748902-0.048521
+function_4: 0.416243-0.382873-0.372901-0.432460
+function_5: 0.021933-0.990981-0.919130-0.988763
+function_6: 0.721833-0.246550-0.734369-0.611496-0.000000
+function_7: 0.006908-0.129532-0.484908-0.031440-0.077654-0.992662
+function_8: 0.094469-0.178320-0.002054-0.061263-0.860762-0.819836-0.047864-0.719353
+
+Re-generate command:
+python src/generate_week7_queries_tuned.py --data-dir initial_data --output src/module18_week7_queries.txt --report src/module18_week7_tuning_report.txt
+
+Important:
+If your local arrays have been updated to the post-Round-6 state (16-point data for early functions), rerun the command before final portal submission so Round 7 queries use the latest observations.

@@ -1,0 +1,8 @@
+function_1: model=svr cv_mae=0.001021 strategy=scale_emergence temperature=0.67 top_k=112 top_p=0.90 max_tokens=96 small_window=6 medium_window=9 emergence=0.002544 disagreement=0.001121
+function_2: model=mlp cv_mae=0.174795 strategy=scale_emergence temperature=0.66 top_k=112 top_p=0.90 max_tokens=96 small_window=6 medium_window=9 emergence=0.315731 disagreement=0.132286
+function_3: model=svr cv_mae=0.052794 strategy=scale_emergence temperature=0.64 top_k=112 top_p=0.90 max_tokens=96 small_window=6 medium_window=9 emergence=0.016568 disagreement=0.007105
+function_4: model=svr cv_mae=1.220121 strategy=scale_emergence temperature=0.60 top_k=112 top_p=0.90 max_tokens=96 small_window=6 medium_window=9 emergence=6.173593 disagreement=2.631181
+function_5: model=svr cv_mae=106.415167 strategy=scale_emergence temperature=0.62 top_k=112 top_p=0.90 max_tokens=96 small_window=6 medium_window=9 emergence=0.000000 disagreement=160.148364
+function_6: model=mlp cv_mae=0.154849 strategy=scale_emergence temperature=0.61 top_k=112 top_p=0.90 max_tokens=96 small_window=6 medium_window=9 emergence=1.288044 disagreement=0.539741
+function_7: model=svr cv_mae=0.142888 strategy=scale_emergence temperature=0.63 top_k=112 top_p=0.90 max_tokens=96 small_window=6 medium_window=9 emergence=0.503268 disagreement=0.207078
+function_8: model=svr cv_mae=0.248537 strategy=scale_emergence temperature=0.61 top_k=112 top_p=0.90 max_tokens=96 small_window=6 medium_window=9 emergence=1.565342 disagreement=0.714917

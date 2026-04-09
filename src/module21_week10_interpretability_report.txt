@@ -1,0 +1,8 @@
+function_1: model=svr cv_mae=0.000818 mode=balanced pred=0.9991 unc=1.0000 nov=0.8051 top_dims=x2:-0.0028,x1:+0.0026
+function_2: model=svr cv_mae=0.204484 mode=balanced pred=0.9870 unc=1.0000 nov=0.4146 top_dims=x1:-0.0967,x2:+0.0357
+function_3: model=svr cv_mae=0.049168 mode=exploit pred=1.0000 unc=0.3339 nov=0.7936 top_dims=x3:-0.0078,x2:+0.0033,x1:+0.0029
+function_4: model=svr cv_mae=1.230399 mode=exploit pred=0.9904 unc=0.3548 nov=0.5990 top_dims=x4:-6.7469,x3:+2.5373,x1:+2.3373
+function_5: model=mlp cv_mae=94.527675 mode=balanced pred=0.9233 unc=0.9253 nov=0.8851 top_dims=x3:+1400.8061,x4:+775.8114,x2:+677.1553
+function_6: model=mlp cv_mae=0.203024 mode=explore pred=0.7039 unc=0.8994 nov=0.5684 top_dims=x2:+1.0668,x4:+0.9969,x3:-0.4014
+function_7: model=svr cv_mae=0.164712 mode=balanced pred=0.9426 unc=0.7824 nov=0.6516 top_dims=x6:+0.5772,x5:-0.5664,x2:-0.1760
+function_8: model=mlp cv_mae=0.163342 mode=balanced pred=0.8335 unc=0.9465 nov=0.7301 top_dims=x4:-1.3519,x3:-1.0059,x1:-0.7461

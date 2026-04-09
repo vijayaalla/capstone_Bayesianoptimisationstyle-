@@ -1,0 +1,8 @@
+function_1: model=svr cv_mae=0.001503 norm_cv=1.3889 beta=2.0650
+function_2: model=mlp cv_mae=0.173763 norm_cv=0.7710 beta=1.7870
+function_3: model=svr cv_mae=0.044295 norm_cv=0.5260 beta=1.7967
+function_4: model=svr cv_mae=1.007113 norm_cv=0.1435 beta=1.7446
+function_5: model=svr cv_mae=116.334287 norm_cv=0.4737 beta=1.8932
+function_6: model=mlp cv_mae=0.252193 norm_cv=0.5617 beta=2.0528
+function_7: model=svr cv_mae=0.166739 norm_cv=0.5519 beta=2.1683
+function_8: model=svr cv_mae=0.201097 norm_cv=0.2124 beta=2.2556

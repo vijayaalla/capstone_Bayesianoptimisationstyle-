@@ -1,0 +1,22 @@
+Module 20.1 - Round 9 Query Submission
+
+These query points were generated with a scaling/emergence-aware strategy:
+- short-, medium-, and full-context model views
+- emergent-gain and disagreement scoring
+- constrained decoding (`temperature`, `top_k`, `top_p`)
+- novelty and format-safety guardrails
+
+function_1: 0.012238-0.976886
+function_2: 0.976766-0.020969
+function_3: 0.058302-0.996508-0.852649
+function_4: 0.366303-0.572518-0.485293-0.552972
+function_5: 0.218549-0.899971-0.971768-0.931623
+function_6: 0.522684-0.117039-0.907657-0.771524-0.041638
+function_7: 0.099302-0.020511-0.938158-0.004937-0.060092-0.968777
+function_8: 0.314321-0.462935-0.004773-0.165050-0.849560-0.946149-0.075651-0.808843
+
+Re-generate command:
+python src/generate_week9_queries_scaling_emergence.py --data-dir initial_data --output src/module20_week9_queries.txt --report src/module20_week9_scaling_report.txt
+
+Important:
+If your local arrays have been updated to the post-Round-8 state (18-point data for early functions), rerun the command before final portal submission so Round 9 queries use the latest observations.
