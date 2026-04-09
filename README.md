@@ -9,6 +9,10 @@ The overall goal is to maximise each function with a limited number of sequentia
 
 Career relevance: this project develops practical skills in uncertainty-aware decision-making, model selection under limited data, iterative experimentation, and communicating technical trade-offs clearly.
 
+Core documentation for the Module 21 activity:
+- [BBO Dataset Datasheet](docs/bbo_dataset_datasheet.md)
+- [BBO Strategy Model Card](docs/bbo_model_card.md)
+
 ## Section 2: Inputs and Outputs
 
 Each function receives an input vector `x` where each component is in `[0, 1]`, and returns one scalar output `y`.
@@ -194,8 +198,8 @@ Current Module 21 artifacts:
 - `src/module21_week10_submission.txt`
 - `src/module21_component21_1_reflection.md`
 - `src/module21_discussion_post.md`
-- `docs/bbo_dataset_datasheet.md`
-- `docs/bbo_model_card.md`
+- [docs/bbo_dataset_datasheet.md](docs/bbo_dataset_datasheet.md)
+- [docs/bbo_model_card.md](docs/bbo_model_card.md)
 
 ## Section 12: Reproducible Commands
 
