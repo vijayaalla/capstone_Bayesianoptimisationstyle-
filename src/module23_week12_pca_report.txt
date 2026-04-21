@@ -1,0 +1,8 @@
+function_1: model=svr cv_mae=0.000885 pc1=0.653 pc2=0.347 pred=1.0000 unc=1.0000 nov=0.8923 align=0.7728 pc1_dims=x1:0.707,x2:0.707
+function_2: model=svr cv_mae=0.154714 pc1=0.793 pc2=0.207 pred=0.9560 unc=0.9506 nov=0.4754 align=0.8616 pc1_dims=x1:0.707,x2:0.707
+function_3: model=svr cv_mae=0.048877 pc1=0.523 pc2=0.290 pred=0.9877 unc=0.0730 nov=0.2065 align=0.9941 pc1_dims=x2:0.659,x1:0.571,x3:0.489
+function_4: model=svr cv_mae=0.864928 pc1=0.355 pc2=0.303 pred=0.9816 unc=0.4972 nov=0.6167 align=0.7918 pc1_dims=x1:0.620,x2:0.586,x4:0.518
+function_5: model=mlp cv_mae=96.376185 pc1=0.340 pc2=0.305 pred=1.0000 unc=1.0000 nov=0.4732 align=0.8249 pc1_dims=x4:0.616,x2:0.578,x3:0.530
+function_6: model=mlp cv_mae=0.210392 pc1=0.353 pc2=0.263 pred=0.9933 unc=0.2182 nov=0.5287 align=0.8945 pc1_dims=x1:0.583,x5:0.558,x2:0.467
+function_7: model=svr cv_mae=0.200144 pc1=0.284 pc2=0.246 pred=0.9762 unc=0.9233 nov=0.5014 align=0.8232 pc1_dims=x1:0.559,x6:0.554,x2:0.394
+function_8: model=mlp cv_mae=0.230665 pc1=0.201 pc2=0.192 pred=0.9079 unc=0.6691 nov=0.8532 align=0.6343 pc1_dims=x8:0.633,x4:0.608,x2:0.459

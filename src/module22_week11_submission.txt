@@ -1,0 +1,45 @@
+Module 22 - Round 11 Query Submission
+
+These query points were generated with a clustering-aware surrogate strategy:
+- tuned surrogate selection (SVR or MLP by CV MAE)
+- local clustering of observed inputs to identify promising regions
+- explicit distance cues (`centroid_trend`, `boundary_tightening`, `bridge_probe`)
+- candidate ranking from prediction, uncertainty, novelty, and cluster alignment
+
+function_1: 0.000092-0.991177
+  target cluster: c0 | cue: bridge_probe
+  note: tests whether the sparse edge-facing 2D cluster remains coherent when extended toward the upper-left boundary.
+
+function_2: 0.718693-0.783068
+  target cluster: c0 | cue: centroid_trend
+  note: stays inside the strongest upper-right style cluster instead of jumping to a new region, tightening around the local centroid trend.
+
+function_3: 0.206391-0.465088-0.309024
+  target cluster: c0 | cue: centroid_trend
+  note: refines the best 3D local cluster by moving toward its centroid rather than repeating an extreme-corner query.
+
+function_4: 0.423371-0.098478-0.466326-0.439897
+  target cluster: c2 | cue: bridge_probe
+  note: probes the gap between neighboring basin-like clusters to sharpen where the local structure improves or degrades.
+
+function_5: 0.699431-0.999999-0.999999-0.999999
+  target cluster: c0 | cue: boundary_tightening
+  note: keeps the strongest dimensions pinned near the top boundary while adjusting x1 to tighten around the cluster edge.
+
+function_6: 0.729477-0.423161-0.703560-0.836322-0.200699
+  target cluster: c2 | cue: centroid_trend
+  note: continues refining the best-supported 5D cluster instead of paying for another wide exploratory jump.
+
+function_7: 0.848259-0.000000-0.999999-0.668875-0.000000-0.999999
+  target cluster: c1 | cue: bridge_probe
+  note: checks whether several separated high-edge observations belong to one broader promising region in 6D.
+
+function_8: 0.349519-0.265082-0.454653-0.448293-0.440973-0.456735-0.448389-0.621001
+  target cluster: c4 | cue: boundary_tightening
+  note: works the boundary of a broad high-dimensional cluster rather than scattering another fully global sample.
+
+Re-generate command:
+python src/generate_week11_queries_clustering.py --data-dir initial_data --output src/module22_week11_queries.txt --report src/module22_week11_cluster_report.txt
+
+Important:
+The current repository still shows the baseline `initial_data` snapshot. If your local arrays have been updated with returned portal results through Round 10, rerun the command above before final portal submission so Round 11 uses the latest observations.

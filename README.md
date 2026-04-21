@@ -50,7 +50,7 @@ The objective is to **maximise** all eight functions while working under strict 
 
 Success is not only highest observed output; it is also a strong evidence-based process: choosing reasonable points, learning from outcomes, and updating strategy over time.
 
-## Section 4: Technical Approach (Rounds 1-10)
+## Section 4: Technical Approach (Rounds 1-12)
 
 This is a living strategy log and is updated each round.
 
@@ -117,6 +117,20 @@ This is a living strategy log and is updated each round.
   `score = 0.55 * predicted_value + 0.30 * uncertainty + 0.15 * novelty`
 - Chose candidates deterministically for easier reproducibility.
 - Added local sensitivity estimates to explain which input dimensions most influenced each chosen query.
+
+### Round 11
+- Reframed the search space through a clustering lens.
+- Clustered observed points to identify local groups, centroid trends, and gaps between neighboring regions.
+- Ranked clusters using local quality, surrogate predictions, uncertainty, and inter-cluster separation.
+- Added three distance cues to guide the final query:
+  `centroid_trend`, `boundary_tightening`, and `bridge_probe`
+- Selected candidates by combining prediction, uncertainty, novelty, and alignment with the chosen local cluster structure.
+
+### Round 12
+- Reframed the observed query history as a high-dimensional dataset and used PCA-style reasoning to guide the next move.
+- Identified dominant variation directions before candidate generation.
+- Added PCA-aligned local perturbations around strong anchors to reduce randomness.
+- Scored candidates with prediction, uncertainty, novelty, and PCA alignment.
 
 ### Exploration vs Exploitation Policy
 - Low dimensions: slightly more exploitation around promising areas.
@@ -201,7 +215,26 @@ Current Module 21 artifacts:
 - [docs/bbo_dataset_datasheet.md](docs/bbo_dataset_datasheet.md)
 - [docs/bbo_model_card.md](docs/bbo_model_card.md)
 
-## Section 12: Reproducible Commands
+## Section 12: Module 22 Deliverables
+
+Current Module 22 artifacts:
+- `src/generate_week11_queries_clustering.py`
+- `src/module22_week11_queries.txt`
+- `src/module22_week11_cluster_report.txt`
+- `src/module22_week11_submission.txt`
+- `src/module22_discussion_post.md`
+
+## Section 13: Module 23 Deliverables
+
+Current Module 23 artifacts:
+- `src/generate_week12_queries_pca.py`
+- `src/module23_week12_queries.txt`
+- `src/module23_week12_pca_report.txt`
+- `src/module23_week12_submission.txt`
+- `src/module23_component23_1_reflection.md`
+- `src/module23_discussion_post.md`
+
+## Section 14: Reproducible Commands
 
 Query generation commands:
 - Round 3 (SVM):  
@@ -220,6 +253,10 @@ Query generation commands:
   `python src/generate_week9_queries_scaling_emergence.py --data-dir initial_data --output src/module20_week9_queries.txt --report src/module20_week9_scaling_report.txt`
 - Round 10 (interpretability strategy):  
   `python src/generate_week10_queries_interpretable.py --data-dir initial_data --output src/module21_week10_queries.txt --report src/module21_week10_interpretability_report.txt`
+- Round 11 (clustering-aware strategy):
+  `python src/generate_week11_queries_clustering.py --data-dir initial_data --output src/module22_week11_queries.txt --report src/module22_week11_cluster_report.txt`
+- Round 12 (PCA-guided strategy):
+  `python src/generate_week12_queries_pca.py --data-dir initial_data --output src/module23_week12_queries.txt --report src/module23_week12_pca_report.txt`
 
 Formatting rule reminder:
 - Portal query values are emitted with six decimals in `0.xxxxxx` format.
