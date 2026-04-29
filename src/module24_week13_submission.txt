@@ -1,0 +1,22 @@
+Module 24.1 - Final Round Query Submission
+
+These query points were generated with an RL-inspired policy chooser:
+- exploit arm: local refinement near strong regions
+- explore arm: global uncertainty-seeking search
+- pca arm: dominant-direction search
+- final arm selected by strongest policy-conditioned reward proxy
+
+function_1: 0.889382-0.900099
+function_2: 0.995535-0.976503
+function_3: 0.277470-0.226389-0.445302
+function_4: 0.456075-0.382270-0.412261-0.382384
+function_5: 0.121982-0.888915-0.992806-0.955957
+function_6: 0.609474-0.540093-0.378775-0.934945-0.032678
+function_7: 0.000000-0.480719-0.243063-0.148102-0.294101-0.824436
+function_8: 0.184821-0.130605-0.000000-0.036614-0.442099-0.687638-0.349585-0.829199
+
+Re-generate command:
+python src/generate_week13_queries_rl.py --data-dir initial_data --output src/module24_week13_queries.txt --report src/module24_week13_rl_report.txt
+
+Important:
+If your local arrays have been updated to the post-Round-12 state, rerun the command before final portal submission so the final query set uses the latest observations.

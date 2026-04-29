@@ -1,0 +1,8 @@
+function_1: model=svr cv_mae=0.000833 chosen_arm=exploit exploit=0.9219 explore=0.8674 pca=0.9022 mean=0.001179 std=0.001448
+function_2: model=mlp cv_mae=0.165959 chosen_arm=exploit exploit=0.9953 explore=0.8974 pca=0.8908 mean=0.508556 std=0.215812
+function_3: model=svr cv_mae=0.050972 chosen_arm=exploit exploit=0.8412 explore=0.5721 pca=0.8055 mean=-0.057818 std=0.040884
+function_4: model=svr cv_mae=1.110170 chosen_arm=exploit exploit=0.9567 explore=0.6659 pca=0.8391 mean=-2.904098 std=2.231981
+function_5: model=mlp cv_mae=106.565046 chosen_arm=exploit exploit=0.9508 explore=0.8821 pca=0.9386 mean=451.856269 std=383.029881
+function_6: model=svr cv_mae=0.218458 chosen_arm=exploit exploit=0.9312 explore=0.9200 pca=0.8158 mean=-0.690382 std=0.202161
+function_7: model=svr cv_mae=0.142049 chosen_arm=exploit exploit=0.9091 explore=0.8927 pca=0.9090 mean=0.739207 std=0.475988
+function_8: model=svr cv_mae=0.189796 chosen_arm=exploit exploit=0.9446 explore=0.8150 pca=0.8876 mean=9.799711 std=0.155759

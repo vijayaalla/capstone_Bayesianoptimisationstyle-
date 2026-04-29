@@ -50,7 +50,7 @@ The objective is to **maximise** all eight functions while working under strict 
 
 Success is not only highest observed output; it is also a strong evidence-based process: choosing reasonable points, learning from outcomes, and updating strategy over time.
 
-## Section 4: Technical Approach (Rounds 1-12)
+## Section 4: Technical Approach (Rounds 1-13)
 
 This is a living strategy log and is updated each round.
 
@@ -131,6 +131,13 @@ This is a living strategy log and is updated each round.
 - Identified dominant variation directions before candidate generation.
 - Added PCA-aligned local perturbations around strong anchors to reduce randomness.
 - Scored candidates with prediction, uncertainty, novelty, and PCA alignment.
+
+### Round 13
+- Framed the final round through an RL-style policy comparison.
+- Compared three policy arms per function:
+  `exploit`, `explore`, and `pca`
+- Treated round-to-round outputs as reward-like feedback and chose the arm with the strongest policy-conditioned reward proxy.
+- Used the final report to assess whether evidence now supported confident exploitation or whether alternative arms remained competitive.
 
 ### Exploration vs Exploitation Policy
 - Low dimensions: slightly more exploitation around promising areas.
@@ -234,7 +241,17 @@ Current Module 23 artifacts:
 - `src/module23_component23_1_reflection.md`
 - `src/module23_discussion_post.md`
 
-## Section 14: Reproducible Commands
+## Section 14: Module 24 Deliverables
+
+Current Module 24 artifacts:
+- `src/generate_week13_queries_rl.py`
+- `src/module24_week13_queries.txt`
+- `src/module24_week13_rl_report.txt`
+- `src/module24_week13_submission.txt`
+- `src/module24_component24_1_reflection.md`
+- `src/module24_discussion_post.md`
+
+## Section 15: Reproducible Commands
 
 Query generation commands:
 - Round 3 (SVM):  
@@ -257,6 +274,8 @@ Query generation commands:
   `python src/generate_week11_queries_clustering.py --data-dir initial_data --output src/module22_week11_queries.txt --report src/module22_week11_cluster_report.txt`
 - Round 12 (PCA-guided strategy):
   `python src/generate_week12_queries_pca.py --data-dir initial_data --output src/module23_week12_queries.txt --report src/module23_week12_pca_report.txt`
+- Round 13 (RL-inspired final strategy):
+  `python src/generate_week13_queries_rl.py --data-dir initial_data --output src/module24_week13_queries.txt --report src/module24_week13_rl_report.txt`
 
 Formatting rule reminder:
 - Portal query values are emitted with six decimals in `0.xxxxxx` format.
