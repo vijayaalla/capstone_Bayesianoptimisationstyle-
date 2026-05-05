@@ -13,6 +13,22 @@ Core documentation for the Module 21 activity:
 - [BBO Dataset Datasheet](docs/bbo_dataset_datasheet.md)
 - [BBO Strategy Model Card](docs/bbo_model_card.md)
 
+## Quick Start
+
+1. Create and activate a virtual environment:
+   `python3 -m venv .venv`
+   `source .venv/bin/activate`
+2. Install the required packages:
+   `pip install -r requirements.txt`
+3. Generate a baseline query file from the committed repository snapshot:
+   `python src/generate_round_queries.py --data-dir initial_data --output src/example_queries.txt`
+4. Open the generated portal-format queries in:
+   `src/example_queries.txt`
+
+Notes:
+- The public repository keeps the baseline `initial_data/` snapshot plus round-by-round query artifacts.
+- To reproduce a later round, run the corresponding command from Section 15 after updating your local arrays with the returned portal feedback.
+
 ## Section 2: Inputs and Outputs
 
 Each function receives an input vector `x` where each component is in `[0, 1]`, and returns one scalar output `y`.
@@ -133,7 +149,7 @@ This is a living strategy log and is updated each round.
 - Scored candidates with prediction, uncertainty, novelty, and PCA alignment.
 
 ### Round 13
-- Framed the final round through an RL-style policy comparison.
+- Framed the final round through an RL-inspired policy comparison.
 - Compared three policy arms per function:
   `exploit`, `explore`, and `pca`
 - Treated round-to-round outputs as reward-like feedback and chose the arm with the strongest policy-conditioned reward proxy.
@@ -279,3 +295,7 @@ Query generation commands:
 
 Formatting rule reminder:
 - Portal query values are emitted with six decimals in `0.xxxxxx` format.
+
+## Section 16: License
+
+This repository is licensed under the MIT License. See [LICENSE](LICENSE) for the full text.

@@ -133,7 +133,7 @@ The repository is intended to be public for course discussion and peer feedback.
 
 ## Terms of Use
 
-No separate license file is present in the current repository snapshot. That means reuse terms are not explicitly granted beyond normal access to a public GitHub repository and any course-related expectations attached to the capstone. Until a license is added, the safest interpretation is that the material should be treated as educational/reference material rather than freely reusable project assets.
+This repository now includes an MIT `LICENSE` file, which makes the reuse terms explicit for code and accompanying project materials in the repository. The capstone context still matters, but readers no longer have to infer permissions from repository visibility alone.
 
 ## Maintenance
 
